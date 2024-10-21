@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+    app:
+      image: node:16.14.0
+      working_dir: /usr/src/app
+      tty: true
+      ports: 
+      - '8080:8080'
+      volumes:
+        - ./:/usr/src/app
+      command: >
+        bash -c "npm install &&
+        npm install nodemon -g &&
+        nodemon src/server.js"
+networks:
+  developer-seed-tutorial-net:
+    external: true
